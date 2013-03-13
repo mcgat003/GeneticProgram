@@ -6,6 +6,9 @@ import geneticProgramming.operators.*
 class NodeTree {
 def fitness
 def opArray=[Times(),Plus(),Divide(),Minus()]
+def varArray=["x", "y", "z"]
+//determines percentage of variables generated
+def varPercent = 5
 Random randOp= new Random()
 def root
 def NodeTree(s){
@@ -13,7 +16,7 @@ def NodeTree(s){
 }
 def create(s){
 	if (s == 1){
-		new node(new TerminalOp())
+		new node(generateTerminal())
 	}
 	else{
 		def Q=[]
@@ -33,11 +36,25 @@ def create(s){
 			}
 		}
 		for(i in Q){
-			i.changeOp(new TerminalOp())
+			i.changeOp(generateTerminal())
 		}
 		r
 	}
 }
+	def generateTerminal(){
+		if(varPercent == 0){
+			new TerminalOp()
+		}else{
+			int decider = randOp.nextInt(varPercent)		
+			if (decider == 1){
+				int chooseVar = randOp.nextInt(100)%varArray.size
+				new VariableOp(varArray[chooseVar])
+			}else{
+				new TerminalOp()
+			}
+		}
+	}
+
 	def getRandOp(){
 		opArray[randOp.nextInt(4)]
 	}
@@ -72,4 +89,5 @@ def create(s){
 	def Divide(){
 		new DivideOp()
 	}
+	
 }

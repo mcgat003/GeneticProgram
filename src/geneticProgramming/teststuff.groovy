@@ -10,6 +10,7 @@ class teststuff {
 		largeMultiElement.String()
 		//println oneElement.calcTreeValue()
 		//println smallMultiElement.calcTreeValue()
-		println largeMultiElement.calcTreeValue()
+		//println largeMultiElement.calcTreeValue()
+
 	}
 }
