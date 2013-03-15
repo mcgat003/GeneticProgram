@@ -3,8 +3,9 @@ package geneticProgramming
 
 
 
-class NodeTree {
+class NodeTree implements Comparable{
 def public static xValue
+def maxIndex
 def fitness
 def opArray=[Times(),Plus(),Divide(),Minus()]
 def varArray=["x"]
@@ -63,20 +64,31 @@ def create(s){
 		}else{
 			int decider = randOp.nextInt(varPercent)		
 			if (decider == 1){
-				int chooseVar = randOp.nextInt(100)%varArray.size
-				new VariableOp(varArray[chooseVar])
+				new VariableOp()
 			}else{
 				new TerminalOp()
 			}
 		}
 	}
-	def Testit(){
-		println new node(root.operate.copy()).String()
-		
-		
+	def calcIndex(){
+		def ind = 0
+		root.index = ind
+		for (i in root.children){
+			ind++
+			calcIndexRecursion(i,ind)
+		}
+		maxIndex
+	}
+	def calcIndexRecursion(node, ind){
+		node.index = ind
+		for (i in node.children){
+			ind++
+			calcSizeRecursion(i,ind)
+		}
 	}
 	def cloneTree(){
 		def newRoot= new node(root.operate.copy())
+		newRoot.operate.value = root.operate.value
 		for (i in 0..<root.operate.aerity){
 			newRoot.children[i] = cloneTreeRecursion(newRoot,this.root.children[i])
 		}
@@ -84,6 +96,7 @@ def create(s){
 	}
 	def cloneTreeRecursion(clonePar,oldNode){
 		def newNode = new node(oldNode.operate.copy(),clonePar)
+		newNode.operate.value = oldNode.operate.value
 		for (i in 0..<oldNode.operate.aerity){
 			newNode.children[i] = cloneTreeRecursion(newNode,oldNode.children[i])
 		}
@@ -128,6 +141,16 @@ def create(s){
 	
 	def Divide(){
 		new DivideOp()
+	}
+	
+	public int compareTo(pair2) {
+	if (this.fitness > pair2.fitness){
+			-1
+		} else if (this.fitness < pair2.fitness) {
+			1
+		} else {
+			0
+		}
 	}
 	
 }

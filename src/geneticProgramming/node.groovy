@@ -9,6 +9,7 @@ class node {
 	def children
 	def value
 	def depth
+	def index
 		
 	def node(op, par){
 		operate = op 

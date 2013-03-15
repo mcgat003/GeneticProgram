@@ -6,7 +6,8 @@ class VariableOp extends operator {
 	def varArray=["x"]
 	Random randOp= new Random()
 	def VariableOp(name){
-		value = name
+		int chooseVar = randOp.nextInt(100)%varArray.size
+		value = varArray[chooseVar]
 	}
 	def aerity = 0
 	def copy(){
