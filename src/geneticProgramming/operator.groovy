@@ -8,13 +8,6 @@ class operator {
 		
 	}
 	def isVariable= false
-	def checkIfVariable(){
-		if (this.isVariable){
-			NodeTree.xValue
-		} else {
-		value
-		}
-	}
 	def setValue(i){
 		value
 	}

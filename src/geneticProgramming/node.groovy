@@ -43,6 +43,14 @@ class node {
 			
 		}
 	}
+	def checkIfVariable(){
+		if (this.operate.isVariable){
+			NodeTree.xValue
+		} else {
+		value
+		}
+	}
+	
 	def changeOp(op){
 		this.operate = op
 		calcChildren()

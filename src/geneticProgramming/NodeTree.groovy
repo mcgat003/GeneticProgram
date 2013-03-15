@@ -47,15 +47,15 @@ def create(s){
 	}
 }
 	def void CalcFitness(){
-		//note this only calculates for ((x+4)/2+x from x=0 tp 10 incrimenting by 1)
+		//note this only calculates for ((x+4)/2+x from x=0 to 10 incrimenting by 1)
 		def functionVal
-		def treeVal
+		int treeVal
 		fitness =0
 		for (i in 0..10){
 			xValue = i
 			functionVal = (i+4)/2
 			treeVal = this.calcTreeValue() 
-			fitness = fitness+ Math.abs(treeVal-functionVal)
+			fitness = fitness+ Math.abs(treeVal.minus(functionVal))
 		}
 	}
 	def generateTerminal(){
@@ -72,6 +72,7 @@ def create(s){
 	}
 	def calcIndex(){
 		def ind = 0
+		maxIndex =0
 		root.index = ind
 		for (i in root.children){
 			ind++
@@ -85,6 +86,7 @@ def create(s){
 			ind++
 			calcSizeRecursion(i,ind)
 		}
+		if (maxIndex<ind){maxIndex=ind}
 	}
 	def cloneTree(){
 		def newRoot= new node(root.operate.copy())
@@ -117,7 +119,7 @@ def create(s){
 	}
 	def calcTreeValue(){
 		setValue(root)
-		root.value
+		root.checkIfVariable()
 	}
 	
 	def setValue(node){
@@ -145,9 +147,9 @@ def create(s){
 	
 	public int compareTo(pair2) {
 	if (this.fitness > pair2.fitness){
-			-1
-		} else if (this.fitness < pair2.fitness) {
 			1
+		} else if (this.fitness < pair2.fitness) {
+			-1
 		} else {
 			0
 		}
