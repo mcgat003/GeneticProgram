@@ -10,7 +10,6 @@ class TerminalOp extends operator {
 	def calculate(child){
 		value
 	}
-	def name ="green"
 	def generateValue(integer){
 		Random randValue = new Random()
 		randValue.nextInt(10)

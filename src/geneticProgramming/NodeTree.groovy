@@ -4,9 +4,10 @@ import geneticProgramming.operators.*
 
 
 class NodeTree {
+def public static xValue
 def fitness
 def opArray=[Times(),Plus(),Divide(),Minus()]
-def varArray=["x", "y", "z"]
+def varArray=["x"]
 //determines percentage of variables generated
 def varPercent = 5
 Random randOp= new Random()
@@ -41,6 +42,22 @@ def create(s){
 		r
 	}
 }
+	def void CalcFitness(){
+		//note this only calculates for ((x+4)/2+x from x=0 tp 10 incrimenting by 1)
+		def functionVal
+		def treeVal
+		fitness =0
+		for (i in 0..3){
+			xValue = i
+			functionVal = (i+4)/2
+			treeVal = this.calcTreeValue() 
+			fitness = fitness+ Math.abs(treeVal-functionVal)
+			println Math.abs(treeVal-functionVal)
+			println fitness
+		}
+	}
+		
+	def replace
 	def generateTerminal(){
 		if(varPercent == 0){
 			new TerminalOp()
@@ -67,25 +84,30 @@ def create(s){
 		}
 		println node.String()
 	}
-	def calcTreeValue(ww){
+	def calcTreeValue(){
 		setValue(root)
 		root.value
 	}
+	
 	def setValue(node){
 		for (i in node.children){
 			setValue(i)
 		}
 		node.calcNodeValue()
 	}
+	
 	def Times(){
 		new TimesOp()
 	}
+	
 	def Plus(){
 		new PlusOp()
 	}
+	
 	def Minus(){
 		new MinusOp()
 	}
+	
 	def Divide(){
 		new DivideOp()
 	}

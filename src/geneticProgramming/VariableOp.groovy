@@ -6,13 +6,17 @@ class VariableOp extends operator {
 		value = name
 	}
 	def aerity = 0
-	def value 
+	def value
 	def calculate(child){
-		value
+		node
 	}
-
+	def isVariable=true
+	
 	def String(){
 		value
+	}
+	def setValue(i){
+		i
 	}
 
 }
