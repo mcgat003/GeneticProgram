@@ -10,7 +10,10 @@ class teststuff {
 		}
 		println testForest.best.fitness
 		println"next Gen"
-		testForest.nextGeneration()
+		for (i in 1..100){
+			testForest.nextGeneration()
+		}
+			
 		for (i in testForest.treeArray){
 			i.String()
 			println "fitness " + i.fitness

@@ -81,7 +81,12 @@ class Forest {
 	}
 	
 	def findIndex(tree){
-		def choosenIndex = randOp.nextInt(tree.calcIndex()+1)
+		def itSize= tree.calcIndex()
+		def choosenIndex
+		if(itSize == 0){
+		return tree.root
+		} 
+		choosenIndex = randOp.nextInt(tree.calcIndex()+1)
 		if (tree.root.index == choosenIndex){
 			return tree.root
 		}else{
