@@ -2,17 +2,21 @@ package geneticProgramming
 
 class teststuff {
 	def static main(args){
-		Forest testForest= new Forest(8,3)
-		/*for (i in testForest.treeArray){
+		Forest testForest= new Forest(4,5)
+		for (i in testForest.treeArray){
 			i.String()
+			println "fitness " + i.fitness
 			println "***"
 		}
-		println"next Gen" */
+		println testForest.best.fitness
+		println"next Gen"
 		testForest.nextGeneration()
-		/*for (i in testForest.treeArray){
+		for (i in testForest.treeArray){
 			i.String()
+			println "fitness " + i.fitness
 			println "***"
-		} */
+		}
+		println testForest.best.fitness
 		//NodeTree oneElement = new NodeTree(1)
 		//NodeTree smallMultiElement = new NodeTree(3)
 		//NodeTree largeMultiElement = new NodeTree(5)

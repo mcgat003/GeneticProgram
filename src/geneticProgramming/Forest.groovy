@@ -8,6 +8,7 @@ class Forest {
 	def treeArray=[]
 	def forestSize
 	def treeSize
+	def sNode
 	
 	def Forest(numberOfTrees, tSize){
 		forestSize = numberOfTrees
@@ -26,7 +27,7 @@ class Forest {
 		treeArray.sort()
 		int fitForest =forestSize/2-1
 		for (i in 0..(fitForest)){
-			crossover(treeArray[randOp.nextInt(fitForest)],treeArray[randOp.nextInt(fitForest)],treeArray,fitForest+i,fitForest+i+1)
+			crossover(treeArray[randOp.nextInt(fitForest)],treeArray[randOp.nextInt(fitForest)],treeArray,fitForest+i+1,fitForest+i+2)
 			i++
 		}
 		for (i in treeArray){
@@ -44,9 +45,6 @@ class Forest {
 		cloneOne.root = treeOne.cloneTree()
 		cloneTwo.root = treeTwo.cloneTree()
 		swapNodes(cloneOne,cloneTwo)
-		cloneOne.String()
-		println "***"
-		cloneTwo.String()
 		arr[indexOne]= cloneOne
 		arr[indexTwo]= cloneTwo
 		
@@ -56,7 +54,6 @@ class Forest {
 	def swapNodes(treeOne,treeTwo){
 		def nodeOne = findIndex(treeOne)
 		def nodeTwo = findIndex(treeTwo)
-		println "Node One Index: " + nodeOne.index + " Node Two Index: " + nodeTwo.index 
 		def tempTreeOne = new NodeTree()
 		def tempTreeTwo = new NodeTree()
 		tempTreeOne.root = treeOne.cloneTree()
@@ -65,23 +62,19 @@ class Forest {
 		def tempTwo = findIndex(tempTreeTwo, nodeTwo.index)
 		if (nodeOne.index== 0){
 			treeOne.root = tempTwo
-			println "if One tripped"
 		}else{
 			for (i in 0..<nodeOne.parent.children.size()){
 				if (nodeOne.index == nodeOne.parent.children[i].index){
 					nodeOne.parent.children[i]= tempTwo
-					println "else One tripped"
 				}
 			}
 		}
 		if(nodeTwo.index == 0){
 			treeTwo.root = tempOne
-			println "if Two tripped"
 		}else{
 			for (i in 0..<nodeTwo.parent.children.size()){
 				if (nodeTwo.index == nodeTwo.parent.children[i].index){
 					nodeTwo.parent.children[i]= tempOne
-					println "else One tripped"
 				}
 			}
 		}
@@ -89,36 +82,38 @@ class Forest {
 	
 	def findIndex(tree){
 		def choosenIndex = randOp.nextInt(tree.calcIndex()+1)
-		println "choosen index " + choosenIndex
 		if (tree.root.index == choosenIndex){
 			return tree.root
 		}else{
 			for (i in tree.root.children){
 				 def temp= findIndexRecursion(i,choosenIndex)
 				 if (temp !=null){
-					 return temp
+					 sNode = temp
 				 }
 			}
+			return sNode
 		}
 	}
 	def findIndex(tree,choosenIndex){
 		tree.calcIndex()
-		println "choosen index " + choosenIndex
 		if (tree.root.index == choosenIndex){
-			return tree.root
+		 tree.root
 		}else{
 			for (i in tree.root.children){
 				 def temp= findIndexRecursion(i,choosenIndex)
 				 if (temp !=null){
-					 return temp
+					 sNode = temp
 				 }
 			}
+			return sNode
 		}
 	}
 	
 	def findIndexRecursion(node,choosenIndex){
 		if (node.index == choosenIndex){
-			return node
+			if (node.index == choosenIndex){
+				sNode = node
+			}
 		}else{
 			for (i in node.children){
 				findIndexRecursion(i,choosenIndex)

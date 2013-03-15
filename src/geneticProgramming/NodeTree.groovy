@@ -49,7 +49,7 @@ def create(s){
 	def void CalcFitness(){
 		//note this only calculates for ((x+4)/2+x from x=0 to 10 incrimenting by 1)
 		def functionVal
-		int treeVal
+		def treeVal
 		fitness =0
 		for (i in 0..10){
 			xValue = i
@@ -71,22 +71,20 @@ def create(s){
 		}
 	}
 	def calcIndex(){
-		def ind = 0
 		maxIndex =0
-		root.index = ind
+		root.index = maxIndex
 		for (i in root.children){
-			ind++
-			calcIndexRecursion(i,ind)
+			maxIndex++
+			calcIndexRecursion(i)
 		}
 		maxIndex
 	}
-	def calcIndexRecursion(node, ind){
-		node.index = ind
+	def calcIndexRecursion(node){
+		node.index = maxIndex
 		for (i in node.children){
-			ind++
-			calcSizeRecursion(i,ind)
+			maxIndex++
+			calcIndexRecursion(i)
 		}
-		if (maxIndex<ind){maxIndex=ind}
 	}
 	def cloneTree(){
 		def newRoot= new node(root.operate.copy())
