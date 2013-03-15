@@ -1,6 +1,6 @@
 package geneticProgramming
 
-import geneticProgramming.operators.*
+
 
 
 class NodeTree {
@@ -11,10 +11,13 @@ def varArray=["x"]
 //determines percentage of variables generated
 def varPercent = 5
 Random randOp= new Random()
-def root
+def public root
+def NodeTree(){
+	}
 def NodeTree(s){
 	root = create(s)
 }
+
 def create(s){
 	if (s == 1){
 		new node(generateTerminal())
@@ -47,17 +50,13 @@ def create(s){
 		def functionVal
 		def treeVal
 		fitness =0
-		for (i in 0..3){
+		for (i in 0..10){
 			xValue = i
 			functionVal = (i+4)/2
 			treeVal = this.calcTreeValue() 
 			fitness = fitness+ Math.abs(treeVal-functionVal)
-			println Math.abs(treeVal-functionVal)
-			println fitness
 		}
 	}
-		
-	def replace
 	def generateTerminal(){
 		if(varPercent == 0){
 			new TerminalOp()
@@ -70,6 +69,25 @@ def create(s){
 				new TerminalOp()
 			}
 		}
+	}
+	def Testit(){
+		println new node(root.operate.copy()).String()
+		
+		
+	}
+	def cloneTree(){
+		def newRoot= new node(root.operate.copy())
+		for (i in 0..<root.operate.aerity){
+			newRoot.children[i] = cloneTreeRecursion(newRoot,this.root.children[i])
+		}
+		newRoot
+	}
+	def cloneTreeRecursion(clonePar,oldNode){
+		def newNode = new node(oldNode.operate.copy(),clonePar)
+		for (i in 0..<oldNode.operate.aerity){
+			newNode.children[i] = cloneTreeRecursion(newNode,oldNode.children[i])
+		}
+		newNode
 	}
 
 	def getRandOp(){

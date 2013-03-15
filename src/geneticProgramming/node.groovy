@@ -4,7 +4,7 @@ import geneticProgramming.operators.*
 
 class node {
 
-	def operate
+	def public operate
 	def parent
 	def children
 	def value
@@ -24,6 +24,13 @@ class node {
 		depth=0
 		children= []
 		calcChildren()
+	}
+	def copyRoot(){
+		node(this.(operate))
+		
+	}
+	def copyNode(clonePar){
+		node(this.operate,clonePar)
 	}
 	def void calcNodeValue(){
 		value = this.operate.calculate(this.children)

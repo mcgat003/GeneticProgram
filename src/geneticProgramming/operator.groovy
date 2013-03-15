@@ -12,7 +12,7 @@ class operator {
 		if (this.isVariable){
 			NodeTree.xValue
 		} else {
-		6
+		value
 		}
 	}
 	def setValue(i){

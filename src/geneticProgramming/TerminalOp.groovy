@@ -6,6 +6,9 @@ class TerminalOp extends operator {
 		
 	}
 	def aerity = 0
+	def copy(){
+		new TerminalOp()
+	}
 	def value = generateValue()
 	def calculate(child){
 		value
