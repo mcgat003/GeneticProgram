@@ -1,6 +1,7 @@
 package geneticProgramming
 
 class TimesOp extends operator {
+def hasChildren=true
 def aerity = 2
 def copy(){
 	new TimesOp()
@@ -10,6 +11,9 @@ def copy(){
 		def childTwo = child[1].checkIfVariable()
 		childOne * childTwo
 	}
+	
+
+	
 	def String() {
 		"*"
 	}

@@ -1,6 +1,7 @@
 package geneticProgramming
 
 class MinusOp extends operator {
+	def hasChildren=true
 	def aerity = 2
 	def copy(){
 		new MinusOp()
@@ -11,6 +12,9 @@ class MinusOp extends operator {
 			childOne - childTwo
 		
 	}
+	
+
+	
 	def String() {
 		"-"
 	}

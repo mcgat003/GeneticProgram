@@ -56,4 +56,14 @@ class node {
 		calcChildren()
 	}
 	def String(){operate.String()}
+
+
+	def calcString(){
+		if (operate.hasChildren == true){
+			"(" + children[0].calcString() + this.operate.String() + children[1].calcString() + ")"
+		}
+		else{
+			operate.String()
+		}
+	}
 }

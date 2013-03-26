@@ -1,6 +1,7 @@
 package geneticProgramming
 
 class DivideOp extends operator {
+	def hasChildren=true
 	def aerity = 2
 	def copy(){
 		new DivideOp()
@@ -14,5 +15,8 @@ class DivideOp extends operator {
 			childOne / childTwo
 		}
 	}
+	
+
+	
 	def String(){ "/"}
 }

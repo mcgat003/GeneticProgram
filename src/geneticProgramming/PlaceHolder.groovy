@@ -5,6 +5,11 @@ class PlaceHolder extends operator {
 		def calculate(child){
 			0
 		}
+		
+		def calcString(){
+			"" + this.String()
+		}
+		
 		def String(){
 			"PH"
 		}

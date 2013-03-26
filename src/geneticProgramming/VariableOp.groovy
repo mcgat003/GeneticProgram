@@ -3,6 +3,7 @@ package geneticProgramming
 import java.util.Random;
 
 class VariableOp extends operator {
+	def hasChildren=false
 	def varArray=["x"]
 	Random randOp= new Random()
 	def VariableOp(name){
@@ -18,6 +19,8 @@ class VariableOp extends operator {
 		node
 	}
 	def isVariable=true
+
+
 	
 	def String(){
 		value

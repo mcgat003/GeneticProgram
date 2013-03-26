@@ -5,6 +5,7 @@ class TerminalOp extends operator {
 	def terminalOp(){
 		
 	}
+	def hasChildren=false
 	def aerity = 0
 	def copy(){
 		new TerminalOp()
@@ -17,6 +18,9 @@ class TerminalOp extends operator {
 		Random randValue = new Random()
 		randValue.nextInt(10)
 	}
+	
+
+	
 	def String(){
 		value
 	}
